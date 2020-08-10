@@ -1,5 +1,6 @@
 ﻿using BowlingTest.Models;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -9,13 +10,30 @@ namespace BowlingTest
     {
         static void Main(string[] args)
         {
-            string path = @"C:\Documents\BowlingTest\Bin\Games.json";
+            string jsonString = "";
+            try
+            {
+                string path = Path.Combine(Path.GetDirectoryName(Directory.GetCurrentDirectory()), @"Games.json");
 
-            string jsonString = File.ReadAllText(path);
+                jsonString = File.ReadAllText(path);
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
-            List<Session> games = JsonConvert.DeserializeObject<List<Session>>(jsonString);
+            List<Session> sessions = JsonConvert.DeserializeObject<List<Session>>(jsonString);
 
+            foreach (var session in sessions)
+            {
+                Console.WriteLine(session.GameId);
 
+                for (var i = 0;  i < session.Throws.Count; i++)
+                {
+
+                }
+            }
+            Console.ReadLine();
         }
     }
 }
