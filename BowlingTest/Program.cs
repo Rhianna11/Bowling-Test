@@ -28,10 +28,31 @@ namespace BowlingTest
             {
                 Console.WriteLine(session.GameId);
 
+                int score = 0;
                 for (var i = 0;  i < session.Throws.Count; i++)
                 {
 
+                    switch (session.Throws[i])
+                    {
+                        case "X":
+                            score += 10 - Convert.ToInt32(session.Throws[i + 1]) + Convert.ToInt32(session.Throws[i + 2]);
+                            break;
+                        case "/":
+                            score += 10 - Convert.ToInt32(session.Throws[i - 1]) + Convert.ToInt32(session.Throws[i + 1]);
+                            break;
+                        case "-":
+                           
+                            break;
+                        case "F":
+                            
+                            break;
+                        default:
+                            score += Convert.ToInt32(session.Throws[i]);                           
+                            break;
+                    }
                 }
+
+                Console.WriteLine(score);
             }
             Console.ReadLine();
         }
