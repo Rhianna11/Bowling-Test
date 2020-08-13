@@ -41,11 +41,13 @@ namespace BowlingTest
                 for (var i = 0;  i < session.Throws.Count; i++)
                 {
                     throwCount++;
+
                     //Set bool to true when framecount is ten
                     if (frameCount == 10)
                     {
                         isTenthFrame = true;
                     }
+
                     // Switch case for session throws
                     switch (session.Throws[i])
                     { 
@@ -63,6 +65,7 @@ namespace BowlingTest
                                         session.Throws[i],
                                         session.Throws[i + 1],
                                         session.Throws[i + 2]);
+
                                     //Pass second throw to method
                                     isStrikeThenSpare = GameLogic.Logic.isStrikeThenSpare
                                         (session.Throws[i + 2]);
