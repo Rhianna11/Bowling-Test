@@ -14,7 +14,7 @@ namespace BowlingTest
 
             try
             {
-                string path = Path.Combine(Path.GetDirectoryName(Directory.GetCurrentDirectory()), @"Games.json");
+                string path = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + @"\Games.json";
 
                 jsonString = File.ReadAllText(path);
 
